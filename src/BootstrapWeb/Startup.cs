@@ -38,6 +38,15 @@ namespace BootstrapWeb
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Foo API", Version = "v1" });
 			});
+
+			services.AddAuthentication("Bearer")
+				.AddJwtBearer("Bearer", options =>
+				{
+					options.Authority = "https://localhost:44333";
+					options.Audience = "Foo";
+				});
+
+			Services = services;
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +72,9 @@ namespace BootstrapWeb
 			{
 				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Foo API V1");
 			});
+
+			app.UseAuthentication();
+			app.UseAuthorization();
 
 			app.UseMvc(options =>
 			{

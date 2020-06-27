@@ -31,7 +31,7 @@ namespace Web.Identity.Extensions
 			{
 				ClientId = clientId,
 				AllowedScopes = Constants.Scopes.All,
-				RequireClientSecret = true,
+				RequireClientSecret = false,
 				ClientSecrets = null, // list of secrets and/or certificates
 				AccessTokenLifetime = Convert.ToInt32(_options.Value.Token.Lifetime.TotalSeconds),
 				AllowedGrantTypes = GrantTypes.ResourceOwnerPassword

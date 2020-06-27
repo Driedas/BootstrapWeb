@@ -23,7 +23,11 @@ namespace Web.Identity.Extensions
 		public Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
 		{
 			// get user from the database based on context.UserName and context.Password
-			int? userId = 0;
+			int? userId = null;
+			if (context.UserName == "foo")
+			{
+				userId = 10;
+			}
 
 			if (userId != null)
 			{

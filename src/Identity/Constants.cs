@@ -20,7 +20,7 @@ namespace Web.Identity
 		{
 			public static string Foo { get { return "Foo";  } }
 
-			public static string[] All { get { return new string[] { Foo, "bar" }; } }
+			public static string[] All { get { return new string[] { "openid", Foo, "bar" }; } }
 		}
 
 		public static class ClaimNames
