@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Exceptions;
@@ -43,7 +44,10 @@ namespace BootstrapWeb
 				.AddJwtBearer("Bearer", options =>
 				{
 					options.Authority = "https://localhost:44333";
-					options.Audience = "Foo";
+					options.TokenValidationParameters = new TokenValidationParameters()
+					{
+						ValidateAudience = false
+					};
 				});
 
 			Services = services;

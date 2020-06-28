@@ -3,7 +3,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 
 using IdentityServer4.Validation;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
 namespace Web.Identity.Extensions
@@ -11,12 +10,10 @@ namespace Web.Identity.Extensions
 	public class ResourceOwnerPasswordValidator
 		: IResourceOwnerPasswordValidator
 	{
-		private readonly IHttpContextAccessor _httpContextAccessor;
 		private readonly ILogger<ResourceOwnerPasswordValidator> _log;
 
-		public ResourceOwnerPasswordValidator(IHttpContextAccessor httpContextAccessor, ILogger<ResourceOwnerPasswordValidator> log)
+		public ResourceOwnerPasswordValidator(ILogger<ResourceOwnerPasswordValidator> log)
 		{
-			_httpContextAccessor = httpContextAccessor;
 			_log = log;
 		}
 
